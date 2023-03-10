@@ -1,0 +1,16 @@
+<%-include("partial/header")%>
+<h1>Home</h1>
+
+    <p><%=value%></p>
+    <%allPost.map((val)=>{%>
+        <p><h1><%=val.postTitle%></h1></p>
+       
+            <p><%=val.postBody.substring(0,100) +" "%><a href="/posts/<%=val._id%>">Read More...</a></p>
+   
+       
+        
+    <%})%>
+
+    
+
+<%-include("partial/footer")%>
