@@ -1,7 +1,8 @@
 //jshint esversion:6
-
 const express = require("express");
 var _ = require("lodash");
+app.use(cors());
+
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
@@ -16,10 +17,14 @@ const contactContent =
 const app = express();
 
 app.set("view engine", "ejs");
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-mongoose.connect("mongodb://localhost:27017/blogDB");
+mongoose
+    .connect("mongodb://localhost:27017/blogDB")
+    .then(()=> console.log("DB Connection Successfull!!"))
+    .catch((err)=>console.log(err));
 const allPostSchema = new mongoose.Schema({
   postTitle: String,
   postBody: String,
@@ -109,6 +114,6 @@ app.get("/posts/:postId", function(req, res){
     });
   
   });
-app.listen(3000, function () {
+app.listen(3000 , function () {
   console.log("Server started on port 3000");
 });
