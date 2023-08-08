@@ -1,7 +1,7 @@
 //jshint esversion:6
 const express = require("express");
 var _ = require("lodash");
-app.use(cors());
+const cors = require("cors");
 
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
